@@ -410,6 +410,7 @@ class TfPoseEstimator:
             npimg = np.copy(npimg)
         image_h, image_w = npimg.shape[:2]
         centers = {}
+        dc = {"people":[]} ### NEW
         for human in humans:
             # draw point
             for i in range(common.CocoPart.Background.value):
@@ -428,6 +429,10 @@ class TfPoseEstimator:
 
                 # npimg = cv2.line(npimg, centers[pair[0]], centers[pair[1]], common.CocoColors[pair_order], 3)
                 cv2.line(npimg, centers[pair[0]], centers[pair[1]], common.CocoColors[pair_order], 3)
+        ### NEW
+        if output_json_dir:
+            with open(os.path.join(output_json_dir, '{0}_keypoints.json'.format(str(frame).zfill(12))), 'w') as outfile:
+                json.dump(dc, outfile)
 
         return npimg
 
