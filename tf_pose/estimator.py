@@ -410,7 +410,7 @@ class TfPoseEstimator:
 
     @staticmethod
     # def draw_humans(npimg, humans, imgcopy=False):
-    def draw_humans(npimg, humans, imgcopy=False, frame=0, output_json_dir=None): ### NEW
+    def draw_humans(npimg, humans, imgcopy=False, frame=60, output_json_dir=None): ### NEW
         if imgcopy:
             npimg = np.copy(npimg)
         image_h, image_w = npimg.shape[:2]
